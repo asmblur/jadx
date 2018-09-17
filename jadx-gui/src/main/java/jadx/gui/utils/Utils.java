@@ -1,22 +1,16 @@
 package jadx.gui.utils;
 
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.awt.Font;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.io.InputStream;
 import java.net.URL;
 
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jadx.core.dex.info.AccessInfo;
 import jadx.core.dex.instructions.args.ArgType;
@@ -147,9 +141,14 @@ public class Utils {
 		return toLower ? Character.toLowerCase(ch) : ch;
 	}
 
-	public static void setClipboardString(String text){
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		Transferable transferable = new StringSelection(text);
-		clipboard.setContents(transferable, null);
+	public static void setClipboardString(String text) {
+		try {
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			Transferable transferable = new StringSelection(text);
+			clipboard.setContents(transferable, null);
+			LOG.debug("String '{}' copied to clipboard", text);
+		} catch (Exception e) {
+			LOG.error("Failed copy string '{}' to clipboard", text, e);
+		}
 	}
 }

@@ -36,6 +36,7 @@ public class AType<T extends IAttribute> {
 
 	public static final AType<AttrList<JadxError>> JADX_ERROR = new AType<>();
 	public static final AType<AttrList<JadxWarn>> JADX_WARN = new AType<>();
+	public static final AType<AttrList<String>> COMMENTS = new AType<>();
 
 	public static final AType<ExcHandlerAttr> EXC_HANDLER = new AType<>();
 	public static final AType<CatchAttr> CATCH_BLOCK = new AType<>();
@@ -53,4 +54,7 @@ public class AType<T extends IAttribute> {
 	public static final AType<DeclareVariablesAttr> DECLARE_VARIABLES = new AType<>();
 	public static final AType<LoopLabelAttr> LOOP_LABEL = new AType<>();
 	public static final AType<IgnoreEdgeAttr> IGNORE_EDGE = new AType<>();
+
+	private AType() {
+	}
 }

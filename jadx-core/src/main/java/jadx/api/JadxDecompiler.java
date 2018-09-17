@@ -42,7 +42,7 @@ import jadx.core.xmlgen.ResourcesSaver;
  * jadx.load();
  * jadx.save();
  * </code></pre>
- *
+ * <p>
  * Instead of 'save()' you can iterate over decompiled classes:
  * <pre><code>
  *  for(JavaClass cls : jadx.getClasses()) {
@@ -91,7 +91,6 @@ public final class JadxDecompiler {
 
 		root.initClassPath();
 		root.loadResources(getResources());
-		root.initAppResClass();
 
 		initVisitors();
 	}
